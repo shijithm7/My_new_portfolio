@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shijith M - Portfolio</title>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <style>
+    body {
+      background-color: #f5f5f5;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      position: relative;
+    }
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background-color: #2c3e50;
+    }
+    #particles-top {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 200px; /* Adjust height as needed */
+      z-index: -1;
+      background-color: #2c3e50;
+    }
+    .container {
+      width: 80%;
+      max-width: 1200px;
+      margin: 20px auto;
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+      position: relative;
+      animation: fadeInDown 1.5s ease-out;
+    }
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .header img {
+      border-radius: 50%;
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border: 5px solid #3498db;
+      margin-bottom: 20px;
+      animation: bounceIn 2s ease-out;
+    }
+    @keyframes bounceIn {
+      from, 20%, 40%, 60%, 80%, to {
+        animation-timing-function: ease-in-out;
+      }
+      from {
+        opacity: 0;
+        transform: scale3d(.3, .3, .3);
+      }
+      20% {
+        transform: scale3d(1.1, 1.1, 1.1);
+      }
+      40% {
+        transform: scale3d(.9, .9, .9);
+      }
+      60% {
+        opacity: 1;
+        transform: scale3d(1.03, 1.03, 1.03);
+      }
+      80% {
+        transform: scale3d(.97, .97, .97);
+      }
+      to {
+        opacity: 1;
+        transform: scaleX(1);
+      }
+    }
+    .section {
+      margin-bottom: 30px;
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-left: 5px solid;
+      border-radius: 4px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: section-slide-in 1s ease-in-out forwards;
+      transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .section:hover {
+      transform: scale(1.05) rotate(2deg);
+      background: linear-gradient(135deg, #e0f7fa, #ffeb3b);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+    .summary { border-left-color: #007bff; animation-delay: 0.5s; }
+    .skills { border-left-color: #28a745; animation-delay: 0.7s; }
+    .projects { border-left-color: #17a2b8; animation-delay: 0.9s; }
+    .work-history { border-left-color: #ffc107; animation-delay: 1.1s; }
+    .education { border-left-color: #fd7e14; animation-delay: 1.3s; }
+    .course-certification { border-left-color: #6f42c1; animation-delay: 1.5s; }
+    .section-title {
+      font-size: 28px;
+      border-bottom: 2px solid;
+      padding-bottom: 5px;
+      margin-bottom: 20px;
+      color: #333;
+      text-transform: uppercase;
+    }
+    .summary .section-title { border-bottom-color: #007bff; }
+    .skills .section-title { border-bottom-color: #28a745; }
+    .projects .section-title { border-bottom-color: #17a2b8; }
+    .work-history .section-title { border-bottom-color: #ffc107; }
+    .education .section-title { border-bottom-color: #fd7e14; }
+    .course-certification .section-title { border-bottom-color: #6f42c1; }
+    .project-item, .job-item, .edu-item, .cert-item {
+      margin-bottom: 15px;
+    }
+    .project-item p:first-child, .job-item p:first-child, .edu-item p:first-child, .cert-item p:first-child {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .btn {
+      display: inline-block;
+      background-color: #007bff;
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      position: relative;
+      overflow: hidden;
+      transition: background-color 0.3s ease;
+    }
+    .btn:hover {
+      background-color: #0069d9;
+    }
+    .btn::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 300%;
+      height: 300%;
+      background: rgba(255, 255, 255, 0.5);
+      transition: width 0.5s, height 0.5s, top 0.5s, left 0.5s;
+      border-radius: 50%;
+      z-index: 0;
+      opacity: 0;
+    }
+    .btn:hover::after {
+      width: 0;
+      height: 0;
+      top: 50%;
+      left: 50%;
+      opacity: 1;
+    }
+    .btn span {
+      position: relative;
+      z-index: 1;
+    }
+    @keyframes section-slide-in {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div id="particles-js"></div>
+  <div id="particles-top"></div>
+  <div class="container">
+    <div class="header" style="background-color: #2c3e50; color: #fff; padding: 20px; " >
+      <img src="shijith_m_.jpeg" alt="Shijith M's Photo">
+      <h1 style="color: #2ecc71;">SHIJITH M</h1>
+      <p>Muthiyel House, Cherpulassery, Palakkad, Kerala 679506</p>
+      <p><a href="tel:+919605512083" style="color: #3498db;">+91 9605512083</a> | <a href="mailto:shijith.m.anand@gmail.com" style="color: #3498db;">shijith.m.anand@gmail.com</a></p>
+      <p><a href="https://linkedin.com/in/shijith-m-82717015b" style="color: #3498db;">linkedin.com/in/shijith-m-82717015b</a></p>
+    </div>
+
+<div class="summary section">
+  <h2 class="section-title">PROFESSIONAL SUMMARY</h2>
+  <p>Experienced Research And Development Specialist with a demonstrated history of working in the information technology product and service industry. Skilled in computer vision, Pattern Recognition, Natural Language Processing (NLP), Data Science, Software Engineering, and Presentation Skills. Strong R&D professional with a B tech focused in Information Technology from Government Engineering college Palakkad.</p>
+  <p>Demonstrated success in delivering projects and fostering collaboration across teams, effectively communicating complex technical concepts to non-technical stakeholders. Proven ability to lead cross-functional teams to achieve objectives, including guiding a small team to develop projects from scratch based on research papers. Commitment to continuous learning and staying abreast of the latest trends and technologies in Computer Vision, ADAS, NLP, ML, and Data Science, ensuring a valuable contribution as a dependable and innovative team member.</p>
+</div>
+
+
+<div class="skills section" style="font-family: 'Arial', sans-serif; color: #333;">
+  <h2 class="section-title" style="color: #0056b3;">SKILLS</h2>
+  <ul style="list-style-type: none; padding-left: 0;">
+    <li><strong style="color: #2c3e50;">Domains:</strong> <span style="color: #34495e;">Computer Vision, Image Processing, Machine Learning, Deep Learning, NLP, ADAS, Data Science, Data Analytics</span></li>
+    <li><strong style="color: #2c3e50;">AIops/MLops Tools:</strong> <span style="color: #34495e;">Git, DVC, MLflow, Docker</span></li>
+    <li><strong style="color: #2c3e50;">Programming Languages:</strong> <span style="color: #34495e;">Python, C++/C, R, Julia, Java, JavaScript, HTML, CSS</span></li>
+    <li><strong style="color: #2c3e50;">Frameworks and Libraries:</strong>
+      <ul style="list-style-type: none; padding-left: 0;">
+        <li><strong style="color: #1a5276;">Computer Vision, Deep Learning, and Image Processing:</strong> <span style="color: #2874a6;">TensorFlow, Keras, PyTorch, Hugging Face, OpenCV, Open3d, OpenGL, OpenVINO, TensorRT, camera and lighting for machine vision, stereo vision</span></li>
+        <li><strong style="color: #1a5276;">NLP:</strong> <span style="color: #2874a6;">NLTK, SpaCy, Python regex, LightLLM</span></li>
+        <li><strong style="color: #1a5276;">Data Science:</strong> <span style="color: #2874a6;">Pandas, NumPy, Scikit-Learn, PyCaret, Google Teachable Machine</span></li>
+        <li><strong style="color: #1a5276;">Data Visualization:</strong> <span style="color: #2874a6;">Plotly, Seaborn, Matplotlib, ggplot</span></li>
+      </ul>
+    </li>
+    <li><strong style="color: #2c3e50;">Database:</strong> <span style="color: #34495e;">MySQL, MongoDB</span></li>
+    <li><strong style="color: #2c3e50;">Cloud:</strong> <span style="color: #34495e;">AWS, Runpod AI, Vast AI, E2E Networks</span></li>
+    <li><strong style="color: #2c3e50;">Neural Networks:</strong> <span style="color: #34495e;">Yolo, YoloX, YoloR, Unet, Unet++, Deeplabv3, Deeplabv3++, MaskRcnn, Yolact, StyleGan, Pix2pix Gan, LSTM, CNN, I3D, MLAD, PDAN, ACRN, SlowOnly+Fast R-CNN, Siamese, Attention neural networks, LLM (Large Language Model), VIT (Vision Transformers)</span></li>
+    <li><strong style="color: #2c3e50;">Edge Devices:</strong> <span style="color: #34495e;">Raspberry Pi, Jetson Nano, Jetson Xavier NX, Computational Neural Stick, OAK-D, Neuosys rugged for ADAS</span></li>
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="projects section">
+  <h2 class="section-title">PROJECTS</h2>
+
+  <div class="project-item">
+    <h3 style="color: blue;">Guiding Real-Time Multi-Task Perception for L3 ADAS (Research and Development)</h3>
+    <p><strong>Pravaig Dynamics | 2024</strong></p>
+    <p>Currently guiding the development of a cutting-edge perception system utilizing a single neural network architecture for real-time generation of HD vector maps and 3D object detection and tracking. This system aims to project information into a 2D space with high accuracy and low latency, providing comprehensive surround view monitoring.</p>
+    <p>Focusing on implementing state-of-the-art techniques in neural network design to achieve efficient and precise 3D object detection and tracking, essential for L3 ADAS functionalities.</p>
+    <p>Leveraging advanced research in computer vision, deep learning, and sensor fusion to enhance L3 ADAS performance, ensuring robust and reliable real-time decision-making capabilities for driverless vehicles.</p>
+    <p>Currently developing a Proof-of-Concept (PoC) in Python, incorporating frameworks such as TensorFlow and PyTorch for neural network implementation, and utilizing libraries like OpenCV for image processing.</p>
+    <p>Successfully achieved point cloud generation from mono depth images, exploring pseudo-LiDAR concepts similar to Tesla's approach. However, computation time remains high.</p>
+  </div>
+
+  <div class="project-item">
+    <h3 style="color: green;">Guiding Real-Time Multi-Task Perception for L2 ADAS (Research and Development)</h3>
+    <p><strong>Pravaig Dynamics | 2024</strong></p>
+    <p>Currently developing a high-performance perception system using a single backbone multi-head network architecture for real-time detection and classification of pedestrians, cars, traffic lights, and lane markings.</p>
+    <p>Implementing efficient object detection and classification techniques to support L2 ADAS features like pedestrian collision warning and lane departure warning.</p>
+    <p>Leveraging advanced research and technologies to enhance L2 ADAS performance and driver safety.</p>
+    <p>Currently building a Proof-of-Concept (PoC) in Python.</p>
+    <p>Ongoing project with data collection to improve model.</p>
+  </div>
+
+  <div class="project-item">
+    <h3 style="color: red;">3D Object Detection POC with Complex YOLOv4</h3>
+    <p><strong>Pravaig Dynamics | 2023</strong></p>
+    <p>Developed a sophisticated object detection system leveraging Complex-YOLOv4 in PyTorch, optimized for 3D object detection using LiDAR and RGB data.</p>
+    <p>The system is designed to detect various objects in autonomous driving scenarios, incorporating several cutting-edge features:</p>
+    <ul>
+      <li>LiDAR and RGB Data Fusion: Effectively combines LiDAR point cloud data with RGB images to enhance detection accuracy.</li>
+      <li>Advanced Model Configuration: Utilizes custom Complex-YOLOv4 configurations tailored for complex environments, including both full and tiny versions.</li>
+      <li>Efficient Data Processing: Implements robust data processing pipelines for the KITTI dataset, ensuring high-quality data handling and augmentation.</li>
+      <li>Comprehensive Training and Evaluation: Provides extensive scripts for training, testing, and evaluating the model, complete with logging and visualization utilities.</li>
+      <li>Modular and Scalable Architecture: The project is structured with modular components, enabling easy integration and scalability for various applications.</li>
+    </ul>
+  </div>
+
+  <div class="project-item">
+    <h3 style="color: purple;">Real-Time Bird's-Eye View Generation System (BEV)</h3>
+    <p><strong>Pravaig Dynamics | 2023</strong></p>
+    <p>Implemented a novel 2D BEV generation algorithm using calibration, distortion-correction, and inverse perspective mapping (IPM) for efficient information extraction.</p>
+    <p>Leveraged research papers and OpenCV libraries for core functionality.</p>
+    <p>Built a Proof-of-Concept (PoC) in Python for rapid prototyping and optimized it in C++ for real-time performance.</p>
+    <p>Achieved significant processing speed improvements through C++ optimization.</p>
+  </div>
+
+  <div class="project-item">
+    <h3 style="color: teal;">Real-Time 3D Surround View System</h3>
+    <p><strong>Pravaig Dynamics | 2023</strong></p>
+    <p>Provides a calibrated, distortion-corrected, 360-degree view for enhanced driver awareness.</p>
+    <p>Leverages image distortion correction, panoramic stitching with feature extraction (SIFT, SURF, ORB, AKAZE), and real-time C++ processing.</p>
+    <p>Generates a seamless panoramic view or a textured 3D environment (Texture mapping) using OpenGL for efficient rendering.</p>
+    <p>Ideal for ADAS, parking assistance, and autonomous driving applications.</p>
+  </div>
+
+  <div class="project-item">
+    <h3 style="color: orange;">Cutting-Edge Parking Guidance System (OpenCV-Python)</h3>
+    <p><strong>Pravaig Dynamics | 2023</strong></p>
+    <p>Generates dynamic parking overlays on a live, distortion-corrected video feed for enhanced driver awareness and parking precision (ADAS, Driver Safety).</p>
+    <p>Integrates real-time steering wheel angle data (CAN data) to dynamically adjust parking lines based on vehicle trajectory (Vehicle Dynamics, Sensor Fusion).</p>
+    <p>Leverages OpenCV's computer vision capabilities (line detection, image processing, distortion correction) for robust line identification and overlay generation (Machine Vision, Image Analysis).</p>
+  </div>
+
+  <div class="project-item">
+    <h3 style="color: brown;">MARICO Parachute Bottle Print Inspection System</h3>
+    <p><strong>AugurAI | 2023</strong></p>
+    <p>Developed and implemented an advanced machine vision system for real-time visual inspection of Parachute edible oil bottle print quality on a fast-moving conveyor.</p>
+    <p>Utilized image segmentation, pattern recognition, and OCR to detect print defects like misprints, smudges, and misalignments.</p>
+    <p>Optimized CNN models for GPU acceleration using TensorFlow and PyTorch, achieving 97% defect detection accuracy.</p>
+    <p>Deployed on Intel NUC, leveraging OpenCV for high-resolution image preprocessing.</p>
+    <p>Entirely developed in Python, the system integrates seamlessly with manufacturing workflows and adapts to various production speeds and bottle designs.</p>
+  </div>
+
+  <div class="project-item">
+    <h3 style="color: navy;">MAHINDRA Weld Tip Filing Detection from CCTV</h3>
+    <p><strong>AugurAI | 2022</strong></p>
+    <p>Developed a system for Mahindra to detect and count weld tip filings within specific durations of CCTV video.</p>
+    <p>Worked with both real-time and non-real-time video analytics models, achieving 98% accuracy in the proof of concept.</p>
+    <p>Successfully completed real-time deployment.</p>
+  </div>
+
+  <div class="project-item">
+    <h3 style="color: maroon;">Jewelry Recommendation System</h3>
+    <p><strong>AugurAI | 2022</strong></p>
+    <p>Developed a jewelry recommendation system that recommends similar CAD designs from a database based on customer pencil drawing images.</p>
+    <p>Achieved 95% accuracy.</p>
+    <p>Built for Gurukrupa Exports in collaboration with NASSCOM.</p>
+  </div>
+
+  <div class="project-item">
+    <h3 style="color: darkgreen;">Chennai Metro Face Recognition System POC with Ford</h3>
+    <p><strong>AugurAI | 2022</strong></p>
+    <p>Worked with Ford for the Chennai Metro face recognition system.</p>
+    <p>Focused on model development, VPU optimization, and experimental product design.</p>
+  </div>
+
+  <div class="project-item">
+    <h3 style="color: darkorange;">Brakes India Brake Plates Inspection</h3>
+    <p><strong>AugurAI | 2022</strong></p>
+    <p>Developed an AI system for Brakes India using Augur AI to inspect brake plates.</p>
+    <p>The system detects tiny scratches, scores, end cuts, damage, wrinkles, missing holes, rust, measures sizes, and identifies missing parts by comparing with a 3D CAD model.</p>
+  </div>
+
+  <div class="project-item">
+    <h3 style="color: darkred;">Pharma Ampoule Volume Calculation</h3>
+    <p><strong>AugurAI | 2022</strong></p>
+    <p>Led a team to develop a computer vision algorithm using Augur AI for calculating the volume of ampoules from side images.</p>
+    <p>The system classifies each ampoule as accepted or rejected for the production process.</p>
+  </div>
+
+  <div class="project-item">
+    <h3 style="color: darkblue;">Marmon Video Temporal Action Recognition</h3>
+    <p><strong>AugurAI | 2022</strong></p>
+    <p>Developed a computer vision system for Marmon using Augur AI to detect and recognize temporal actions in video.</p>
+  </div>
+
+  <div class="project-item">
+    <h3 style="color: darkcyan;">NANOTROL Path Detection System for Robot</h3>
+    <p><strong>AugurAI | 2022</strong></p>
+    <p>Developed a robot path detection system for NANOTROL, using Augur AI.</p>
+    <p>Designed for a pick and place robotic system.</p>
+  </div>
+
+  <div class="project-item">
+    <h3 style="color: darkcyan;">Blister Strip Inspection Machine</h3>
+    <p><strong>AugurAI | 2021</strong></p>
+    <p>Worked as team lead for developing a blister strip inspection machine based on computer vision.</p>
+    <p>Ensured detection of missing and defective tablet strips, counted missing tablets, and performed OCR on batch numbers and manufacturing dates.</p>
+  </div>
+
+  <div class="project-item">
+    <h3 style="color: darkmagenta;">E LOBIL</h3>
+    <p><strong>Symptots | 2021</strong></p>
+    <p>Worked in data science for time series data analysis, predicting electricity bill amounts, anomaly detection for electricity usage, predicting device over-usage, and suggesting smart electricity usage based on historical data.</p>
+    <p>Utilized the Symptots Elobil IoT device for these analyses and automated web scraping of data from KSEB websites.</p>
+  </div>
+
+  <div class="project-item">
+    <h3 style="color: goldenrod;">Indian Railway Ticket Verification System</h3>
+    <p><strong>Symptots | 2020</strong></p>
+    <p>Worked as the main AI engineer in developing an OCR-based ticket verification machine for Indian Railways.</p>
+    <p>Focused on the research and development of the system, completing the proof of concept with 97% precision.</p>
+  </div>
+
+  <div class="project-item">
+    <h3 style="color: darkviolet;">Face Recognition and Face Segmentation</h3>
+    <p><strong>Pixdynamics | 2020</strong></p>
+    <p>Implemented face recognition using dlib and compared YOLOv2, Faster R-CNN, and HOG face detection methods.</p>
+    <p>Additionally implemented face segmentation using Keras and PyTorch.</p>
+  </div>
+
+  <div class="project-item">
+    <h3 style="color: darkslateblue;">OCR for KYC Automation in Banking Sector</h3>
+    <p><strong>Pixdynamics | 2020</strong></p>
+    <p>Implemented OCR for extracting important data from invoices, ID cards, Aadhar cards, and passports to automate KYC processes in the banking sector.</p>
+    <p>Utilized both Spacy library's NER and Python's regular expression approach for filtering and refining extracted information, ensuring robust accuracy and completeness in document processing and compliance automation.</p>
+  </div>
+
+  <div class="project-item">
+    <h3 style="color: sienna;">Table Image to Excel</h3>
+    <p><strong>Pixdynamics | 2020</strong></p>
+    <p>Converted table images to Excel using Tesseract OCR and developed a line segmentation model to accurately identify columns, headings, and perform OCR for precise data extraction.</p>
+  </div>
+
+  <div class="project-item">
+    <h3 style="color: olive;">Automatic-Rating-System</h3>
+    <p><strong>Personal project | 2020</strong></p>
+    <p>Developed an "Automatic-Rating-System" using NLTK for text preprocessing and Naive Bayes classification to analyze sentiment in social media comments, enabling automatic rating predictions for movies, products, and various categories.</p>
+    <p>This approach enhances accuracy in assessing sentiment from user-generated content on social media platforms.</p>
+  </div>
+
+  <div class="project-item">
+    <h3 style="color: peru;">Interview Shortlister</h3>
+    <p><strong>Personal project | 2020</strong></p>
+    <p>Automated candidate shortlisting from an Excel sheet using Python and Scikit-learn's CountVectorizer.</p>
+    <p>Developed a system to train a Naive Bayes classifier to predict which candidates meet criteria based on their comments or other textual input, providing an efficient method for initial screening in recruitment or evaluation processes.</p>
+  </div>
+
+  <div class="project-item">
+    <h3 style="color: indigo;">Election Analysis from Twitter</h3>
+    <p><strong>Personal project | 2019</strong></p>
+    <p>Developed an Election Analysis tool based on Naive Bayes theorem using NLTK and PyQt5 for text processing and a graphical user interface, respectively.</p>
+    <p>Allowed users to analyze election-related data efficiently, integrating sentiment analysis and interactive visualization of election trends and predictions.</p>
+  </div>
+
+  <div class="project-item">
+    <h3 style="color: chocolate;">Spam Detection</h3>
+    <p><strong>Personal project | 2018</strong></p>
+    <p>Developed a spam classifier using Natural Language Processing (NLP) and Random Forests in Python to detect email spam.</p>
+    <p>Preprocessed email text with NLTK and transformed text data into numerical features to train a Random Forest classifier, enhancing email security and efficiency in filtering unwanted messages.</p>
+  </div>
+
+  <div class="project-item">
+    <h3 style="color: steelblue;">Android App Development</h3>
+    <p><strong>Personal project | 2017</strong></p>
+    <p>Developed "Raktha," an Android app for blood donation processes.</p>
+    <p>Contributed to the development of an Android app for my college tech fest.</p>
+  </div>
+
+
+
+
+
+
+
+</div>
+
+
+
+
+<div class="work-history section">
+  <h2 class="section-title">WORK HISTORY</h2>
+  
+  <div class="job-item">
+    <p>PRAVAIG | RESEARCH AND DEVELOPMENT AI/ML ENGINEER | 20/03/2023 - Present | Bangalore, Karnataka</p>
+    <p>Role and Responsibilities</p>
+    <ul>
+      <li>Research and development on L2 and L3 ADAS perception systems, specializing in real-time HD mapping, 3D object detection, and tracking.</li>
+      <li>Drive advanced neural network research for precise 3D object detection and image processing, including 2D and 3D surround view systems. Develop Python-based Proof-of-Concepts (PoCs) using TensorFlow, PyTorch, and OpenCV.</li>
+      <li>Pioneered Complex-YOLOv4-based object detection system, advancing ADAS capabilities.</li>
+      <li>Collaborate cross-functionally to integrate backend APIs and endpoints for seamless application integration and driver safety enhancements.</li>
+    </ul>
+  </div>
+
+  <div class="job-item">
+    <p>AgurAI | Computer vision engineer and Data scientist | 27/04/2021 - 18/03/2023 | Trichy, Tamilnadu</p>
+    <p>Role and Responsibilities</p>
+    <ul>
+      <li>Led the development of advanced machine vision systems for diverse applications, including real-time visual inspection of product quality and video analytics for industrial settings.</li>
+      <li>Specialized in image detection, segmentation, pattern recognition, and OCR to detect and classify defects and anomalies with high accuracy.</li>
+      <li>Optimized CNN models using TensorFlow and PyTorch for GPU acceleration, achieving up to 98% accuracy in defect detection and temporal action recognition.</li>
+      <li>Deployed solutions on hardware platforms like Intel NUC, leveraging OpenCV for preprocessing and integration into manufacturing workflows.</li>
+      <li>Collaborated with industry leaders such as Mahindra, Ford, Brakes India, and pharmaceutical companies to deliver tailored computer vision solutions for quality inspection and operational efficiency improvements.</li>
+    </ul>
+  </div>
+
+  <div class="job-item">
+    <p>Symptots | AI engineer | 23/09/2020 - 5/04/2021 | Calicut, Kerala</p>
+    <p>Role and Responsibilities</p>
+    <ul>
+      <li>Development of data science projects analyzing time series data for electricity consumption, predicting bill amounts, and detecting anomalies. Utilized Symptots Elobil IoT device and automated web scraping for data from KSEB websites.</li>
+      <li>Spearheaded OCR-based ticket verification system development for Indian Railways, achieving 97% precision in proof of concept.</li>
+    </ul>
+  </div>
+
+  <div class="job-item">
+    <p>Pixdynamics | Data Science Intern | 16/03/2020 - 14/08/2020 | Kochi, Kerala</p>
+    <p>Role and Responsibilities</p>
+    <ul>
+      <li>Implemented face recognition using dlib and evaluated face detection methods (yolov2, faster rcnn, HOG). Developed face segmentation models using Keras and PyTorch.</li>
+      <li>Implemented OCR solutions for KYC automation in the banking sector, extracting crucial data from invoices, ID cards, Aadhar cards, and passports.</li>
+      <li>Converted table images to Excel using Tesseract OCR, developed line segmentation models for accurate column identification, and performed OCR for precise data extraction.</li>
+    </ul>
+  </div>
+
+</div>
+
+
+  <div class="education section">
+    <h2 class="section-title">EDUCATION</h2>
+    
+    <div class="edu-item">
+      <p>08/2015 - 09/2019 | B. Tech INFORMATION TECHNOLOGY</p>
+      <p>Government Engineering College, Palakkad, APJ Abdul Kalam Technological University, Kerala</p>
+      <p>CGPA 7.35 / 10.0</p>
+    </div>
+
+    <div class="edu-item">
+      <p>06/2013 - 03/2015 | 12th Grade</p>
+      <p>Darul Uloom Higher Secondary School, Thootha</p>
+      <p>CGPA 9.2 / 10.0</p>
+    </div>
+
+    <div class="edu-item">
+      <p>06/2012 - 03/2013 | 10th Grade</p>
+      <p>Darul Uloom Higher Secondary School, Thootha</p>
+      <p>CGPA 9.6 / 10.0</p>
+    </div>
+
+  </div>
+
+
+    <div class="course-certification section">
+      <h2 class="section-title">COURSE & CERTIFICATIONS</h2>
+      
+      <div class="cert-item">
+        <p>7/2017 - 9/2017 | NPTEL CERTIFICATION IN FUNDAMENTALS OF DATABASE SYSTEMS</p>
+        <p>IIT Kanpur, online</p>
+        <p>62%</p>
+      </div>
+
+      <div class="cert-item">
+        <p>5/2022 - 5/2022 | MACHINE LEARNING ENGINEERING FOR PRODUCTION (MLOPS) SPECIALIZATION</p>
+        <p>Coursera</p>
+        <p><a href="https://www.coursera.org/account/accomplishments/specialization/Z7CMF7ESUXEQ" target="_blank">View Certification</a></p>
+      </div>
+
+    </div>
+
+
+    <script>
+      particlesJS("particles-js", {
+        "particles": {
+          "number": {
+            "value": 80,
+            "density": {
+              "enable": true,
+              "value_area": 800
+            }
+          },
+          "color": {
+            "value": "#ffffff"
+          },
+          "shape": {
+            "type": "circle",
+            "stroke": {
+              "width": 0,
+              "color": "#000000"
+            },
+            "polygon": {
+              "nb_sides": 5
+            },
+            "image": {
+              "src": "img/github.svg",
+              "width": 100,
+              "height": 100
+            }
+          },
+          "opacity": {
+            "value": 0.5,
+            "random": false,
+            "anim": {
+              "enable": false,
+              "speed": 1,
+              "opacity_min": 0.1,
+              "sync": false
+            }
+          },
+          "size": {
+            "value": 3,
+            "random": true,
+            "anim": {
+              "enable": false,
+              "speed": 40,
+              "size_min": 0.1,
+              "sync": false
+            }
+          },
+          "line_linked": {
+            "enable": true,
+            "distance": 150,
+            "color": "#ffffff",
+            "opacity": 0.4,
+            "width": 1
+          },
+          "move": {
+            "enable": true,
+            "speed": 6,
+            "direction": "none",
+            "random": false,
+            "straight": false,
+            "out_mode": "out",
+            "bounce": false,
+            "attract": {
+              "enable": false,
+              "rotateX": 600,
+              "rotateY": 1200
+            }
+          }
+        },
+        "interactivity": {
+          "detect_on": "canvas",
+          "events": {
+            "onhover": {
+              "enable": true,
+              "mode": "repulse"
+            },
+            "onclick": {
+              "enable": true,
+              "mode": "push"
+            },
+            "resize": true
+          },
+          "modes": {
+            "grab": {
+              "distance": 400,
+              "line_linked": {
+                "opacity": 1
+              }
+            },
+            "bubble": {
+              "distance": 400,
+              "size": 40,
+              "duration": 2,
+              "opacity": 8,
+              "speed": 3
+            },
+            "repulse": {
+              "distance": 200,
+              "duration": 0.4
+            },
+            "push": {
+              "particles_nb": 4
+            },
+            "remove": {
+              "particles_nb": 2
+            }
+          }
+        },
+        "retina_detect": true
+      });
+
+      particlesJS("particles-top", {
+        "particles": {
+          "number": {
+            "value": 80,
+            "density": {
+              "enable": true,
+              "value_area": 800
+            }
+          },
+          "color": {
+            "value": "#ffffff"
+          },
+          "shape": {
+            "type": "circle",
+            "stroke": {
+              "width": 0,
+              "color": "#000000"
+            },
+            "polygon": {
+              "nb_sides": 5
+            },
+            "image": {
+              "src": "img/github.svg",
+              "width": 100,
+              "height": 100
+            }
+          },
+          "opacity": {
+            "value": 0.5,
+            "random": false,
+            "anim": {
+              "enable": false,
+              "speed": 1,
+              "opacity_min": 0.1,
+              "sync": false
+            }
+          },
+          "size": {
+            "value": 3,
+            "random": true,
+            "anim": {
+              "enable": false,
+              "speed": 40,
+              "size_min": 0.1,
+              "sync": false
+            }
+          },
+          "line_linked": {
+            "enable": true,
+            "distance": 150,
+            "color": "#ffffff",
+            "opacity": 0.4,
+            "width": 1
+          },
+          "move": {
+            "enable": true,
+            "speed": 6,
+            "direction": "none",
+            "random": false,
+            "straight": false,
+            "out_mode": "out",
+            "bounce": false,
+            "attract": {
+              "enable": false,
+              "rotateX": 600,
+              "rotateY": 1200
+            }
+          }
+        },
+        "interactivity": {
+          "detect_on": "canvas",
+          "events": {
+            "onhover": {
+              "enable": true,
+              "mode": "repulse"
+            },
+            "onclick": {
+              "enable": true,
+              "mode": "push"
+            },
+            "resize": true
+          },
+          "modes": {
+            "grab": {
+              "distance": 400,
+              "line_linked": {
+                "opacity": 1
+              }
+            },
+            "bubble": {
+              "distance": 400,
+              "size": 40,
+              "duration": 2,
+              "opacity": 8,
+              "speed": 3
+            },
+            "repulse": {
+              "distance": 200,
+              "duration": 0.4
+            },
+            "push": {
+              "particles_nb": 4
+            },
+            "remove": {
+              "particles_nb": 2
+            }
+          }
+        },
+        "retina_detect": true
+      });
+    </script>
+  </div>
+</body>
+</html>
+
